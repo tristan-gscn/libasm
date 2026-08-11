@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include <stdio.h>
 
-int ft_strlen(char *str);
+size_t	ft_strlen(const char *s);
 
 int	main(void)
 {
-	printf("%d\n", ft_strlen("Hello World"));
+	printf("%zu\n", ft_strlen("Hello World"));
 	return (0);
 }
