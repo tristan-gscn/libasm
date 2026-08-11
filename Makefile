@@ -6,7 +6,7 @@
 #    By: trgascoi <trgascoi@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/11 17:52:01 by trgascoi          #+#    #+#              #
-#    Updated: 2026/08/11 17:52:44 by trgascoi         ###   ########.fr        #
+#    Updated: 2026/08/11 22:59:53 by trgascoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,12 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) test_libasm
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test: $(NAME)
+	cc -Wall -Wextra -Werror tests/main.c $(NAME) -o test_libasm
+	./test_libasm
+
+.PHONY: all clean fclean re test
