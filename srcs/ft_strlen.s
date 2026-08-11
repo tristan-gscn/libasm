@@ -1,9 +1,16 @@
 SECTION .note.GNU-stack noalloc noexec nowrite progbits
 
 SECTION .text
-    GLOBAL addition
+    GLOBAL ft_strlen
 
-addition:
-    MOV RAX, RDI
-    ADD RAX, RSI
+ft_strlen:
+    XOR RAX, RAX
+
+.loop:
+    CMP BYTE [RDI + RAX], 0
+    JE .end
+    ADD RAX, 1
+    JMP .loop
+
+.end:
     RET
