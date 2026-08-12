@@ -19,6 +19,7 @@ int	main(void)
 	test_strcmp();
 	test_write();
 	test_read();
+	test_strdup();
 	test_summary();
 	return (0);
 }
