@@ -15,6 +15,8 @@ NAME = libasm.a
 SRCS       = $(wildcard srcs/*.s)
 OBJS       = $(SRCS:.s=.o)
 
+TEST_SRCS  = $(wildcard tests/*.c)
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -32,7 +34,7 @@ fclean: clean
 re: fclean all
 
 test: $(NAME)
-	cc -Wall -Wextra -Werror tests/main.c $(NAME) -o test_libasm
+	cc -Wall -Wextra -Werror $(TEST_SRCS) $(NAME) -o test_libasm
 	./test_libasm
 
 .PHONY: all clean fclean re test
