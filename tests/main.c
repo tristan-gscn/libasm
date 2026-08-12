@@ -16,5 +16,6 @@ int	main(void)
 {
 	test_strlen();
 	test_strcpy();
+	test_strcmp();
 	return (0);
 }
