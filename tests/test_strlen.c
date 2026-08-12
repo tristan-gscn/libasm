@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_strlen.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: trgascoi <trgascoi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/12 15:05:40 by trgascoi          #+#    #+#             */
+/*   Updated: 2026/08/12 15:06:14 by trgascoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "tests.h"
 #include <string.h>
 
 static void	check(const char *s)
 {
-	size_t	result = ft_strlen(s);
+	size_t	result;
 
+	result = ft_strlen(s);
 	ft_test(result == strlen(s), "ft_strlen(\"%s\") = %zu", s, result);
 }
 
