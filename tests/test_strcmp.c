@@ -1,8 +1,39 @@
 #include "tests.h"
+#include <string.h>
+
+static int	sign(int x)
+{
+	return ((x > 0) - (x < 0));
+}
+
+static void	check(const char *a, const char *b)
+{
+	int	result = sign(ft_strcmp(a, b));
+
+	ft_test(result == sign(strcmp(a, b)),
+		"ft_strcmp(\"%s\", \"%s\") = %d", a, b, result);
+}
+
+static void	check_high_bytes(void)
+{
+	const char	a[2] = {(char)0xff, '\0'};
+	const char	b[2] = {(char)0x01, '\0'};
+	int			result = sign(ft_strcmp(a, b));
+
+	ft_test(result == sign(strcmp(a, b)), "ft_strcmp(0xff, 0x01) = %d", result);
+}
 
 void	test_strcmp(void)
 {
-	printf("ft_strcmp(\"abc\", \"abc\") = %d\n", ft_strcmp("abc", "abc"));
-	printf("ft_strcmp(\"abc\", \"abd\") = %d\n", ft_strcmp("abc", "abd"));
-	printf("ft_strcmp(\"abc\", \"ab\") = %d\n", ft_strcmp("abc", "ab"));
+	printf("\n--- ft_strcmp ---\n");
+	check("abc", "abc");
+	check("abc", "abd");
+	check("abc", "abb");
+	check("abc", "ab");
+	check("ab", "abc");
+	check("", "");
+	check("a", "");
+	check("", "a");
+	check("ABC", "abc");
+	check_high_bytes();
 }
