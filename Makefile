@@ -6,14 +6,16 @@
 #    By: trgascoi <trgascoi@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/11 17:52:01 by trgascoi          #+#    #+#              #
-#    Updated: 2026/08/11 22:59:53 by trgascoi         ###   ########.fr        #
+#    Updated: 2026/08/13 16:32:59 by trgascoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libasm.a
 
-SRCS       = $(wildcard srcs/*.s)
+SRCS       = $(filter-out %_bonus.s,$(wildcard srcs/*.s))
+BONUS_SRCS = $(wildcard srcs/*_bonus.s)
 OBJS       = $(SRCS:.s=.o)
+BONUS_OBJS = $(BONUS_SRCS:.s=.o)
 
 TEST_SRCS  = $(wildcard tests/*.c)
 
@@ -22,11 +24,14 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
 %.o: %.s
 	nasm -f elf64 $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	rm -f $(NAME) test_libasm
@@ -37,4 +42,4 @@ test: $(NAME)
 	cc -Wall -Wextra -Werror $(TEST_SRCS) $(NAME) -o test_libasm
 	./test_libasm
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test bonus
