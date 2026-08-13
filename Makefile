@@ -17,7 +17,8 @@ BONUS_SRCS = $(wildcard srcs/*_bonus.s)
 OBJS       = $(SRCS:.s=.o)
 BONUS_OBJS = $(BONUS_SRCS:.s=.o)
 
-TEST_SRCS  = $(wildcard tests/*.c)
+TEST_SRCS        = $(filter-out tests/test_atoi_base.c,$(wildcard tests/*.c))
+BONUS_TEST_SRCS  = $(wildcard tests/*.c)
 
 all: $(NAME)
 
@@ -34,7 +35,7 @@ clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f $(NAME) test_libasm
+	rm -f $(NAME) test_libasm test_libasm_bonus
 
 re: fclean all
 
@@ -42,4 +43,8 @@ test: $(NAME)
 	cc -Wall -Wextra -Werror $(TEST_SRCS) $(NAME) -o test_libasm
 	./test_libasm
 
-.PHONY: all clean fclean re test bonus
+test_bonus: bonus
+	cc -Wall -Wextra -Werror -DBONUS $(BONUS_TEST_SRCS) $(NAME) -o test_libasm_bonus
+	./test_libasm_bonus
+
+.PHONY: all clean fclean re test bonus test_bonus

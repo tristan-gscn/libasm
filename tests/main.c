@@ -20,6 +20,9 @@ int	main(void)
 	test_write();
 	test_read();
 	test_strdup();
+#ifdef BONUS
+	test_atoi_base();
+#endif
 	test_summary();
 	return (0);
 }
