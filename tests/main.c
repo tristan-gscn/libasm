@@ -6,7 +6,7 @@
 /*   By: trgascoi <trgascoi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 22:56:08 by trgascoi          #+#    #+#             */
-/*   Updated: 2026/08/12 14:52:58 by trgascoi         ###   ########.fr       */
+/*   Updated: 2026/08/13 18:02:19 by trgascoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 static void	test_bonus(void)
 {
 	test_atoi_base();
-	test_list_size();
 	test_list_push_front();
+	test_list_size();
 }
 
 #else

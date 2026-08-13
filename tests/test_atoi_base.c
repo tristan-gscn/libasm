@@ -40,12 +40,30 @@ static void	check_parsing(void)
 	check("+42", "0123456789", 42);
 	check("  -101", "01", -5);
 	check("+0", "0123456789", 0);
+	check("--42", "0123456789", 0);
+	check("42abc", "0123456789", 42);
+	check("", "0123456789", 0);
+	check("   ", "0123456789", 0);
+	check("-", "0123456789", 0);
+	check("abc", "0123456789", 0);
+}
+
+static void	check_invalid_base(void)
+{
+	check("42", "", 0);
+	check("42", "0", 0);
+	check("42", "0123456789A0", 0);
+	check("42", "01234+6789", 0);
+	check("42", "01234-6789", 0);
+	check("42", "01234 6789", 0);
+	check("42", "01234\t6789", 0);
+	check("101", "00", 0);
 }
 
 void	test_atoi_base(void)
 {
 	printf("\n--- ft_atoi_base ---\n");
 	check_bases();
-	printf("-- parsing rules (not implemented yet, expected KO) --\n");
 	check_parsing();
+	check_invalid_base();
 }
