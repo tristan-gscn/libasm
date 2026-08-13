@@ -34,6 +34,7 @@ ssize_t			ft_read(int fd, void *buf, size_t count);
 char			*ft_strdup(const char *s);
 int				ft_atoi_base(char *str, char *base);
 unsigned int	ft_list_size(t_list *begin_list);
+void			ft_list_push_front(t_list **begin_list, void *data);
 
 void			ft_test(int ok, const char *fmt, ...);
 void			test_summary(void);
@@ -46,5 +47,6 @@ void			test_read(void);
 void			test_strdup(void);
 void			test_atoi_base(void);
 void			test_list_size(void);
+void			test_list_push_front(void);
 
 #endif

@@ -18,6 +18,7 @@ static void	test_bonus(void)
 {
 	test_atoi_base();
 	test_list_size();
+	test_list_push_front();
 }
 
 #else
