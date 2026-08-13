@@ -12,6 +12,22 @@
 
 #include "tests.h"
 
+#ifdef BONUS
+
+static void	test_bonus(void)
+{
+	test_atoi_base();
+	test_list_size();
+}
+
+#else
+
+static void	test_bonus(void)
+{
+}
+
+#endif
+
 int	main(void)
 {
 	test_strlen();
@@ -20,9 +36,7 @@ int	main(void)
 	test_write();
 	test_read();
 	test_strdup();
-#ifdef BONUS
-	test_atoi_base();
-#endif
+	test_bonus();
 	test_summary();
 	return (0);
 }

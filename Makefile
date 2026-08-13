@@ -17,7 +17,9 @@ BONUS_SRCS = $(wildcard srcs/*_bonus.s)
 OBJS       = $(SRCS:.s=.o)
 BONUS_OBJS = $(BONUS_SRCS:.s=.o)
 
-TEST_SRCS        = $(filter-out tests/test_atoi_base.c,$(wildcard tests/*.c))
+BONUS_ONLY_TESTS = tests/test_atoi_base.c tests/test_list_size.c
+
+TEST_SRCS        = $(filter-out $(BONUS_ONLY_TESTS),$(wildcard tests/*.c))
 BONUS_TEST_SRCS  = $(wildcard tests/*.c)
 
 all: $(NAME)
