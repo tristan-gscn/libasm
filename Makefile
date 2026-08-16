@@ -18,7 +18,7 @@ OBJS       = $(SRCS:.s=.o)
 BONUS_OBJS = $(BONUS_SRCS:.s=.o)
 
 BONUS_ONLY_TESTS = tests/test_atoi_base.c tests/test_list_size.c \
-                    tests/test_list_push_front.c
+                    tests/test_list_push_front.c tests/test_list_sort.c
 
 TEST_SRCS        = $(filter-out $(BONUS_ONLY_TESTS),$(wildcard tests/*.c))
 BONUS_TEST_SRCS  = $(wildcard tests/*.c)

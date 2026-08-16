@@ -28,7 +28,7 @@ void	ft_test(int ok, const char *fmt, ...)
 	status = KO;
 	if (ok)
 		status = OK;
-	printf("%-45s [%s]\n", buf, status);
+	printf("%-60s [%s]\n", buf, status);
 	g_total++;
 	g_passed += (ok != 0);
 }
