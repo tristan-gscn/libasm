@@ -7,30 +7,48 @@ EXTERN ft_list_size
 
 ft_list_sort:
     PUSH RBX
-    MOV RCX, -1
-    PUSH RDI
+    PUSH R12
+    PUSH R13
+    PUSH R14
+    PUSH R15
+
+    MOV R12, RDI
+    MOV R13, RSI
+
+    MOV RDI, [R12]
     CALL ft_list_size
     MOV RBX, RAX
-    POP RDI
-    LEA R10, [RBX - 1]
+
+    MOV R14, -1
 .loop:
-    CMP RCX, RBX
+    CMP R14, RBX
     JE .end
-    ADD RCX, 1
-    XOR RDX, RDX
+    ADD R14, 1
+    MOV R15, [R12]
+    TEST R15, R15
+    JZ .loop
 .subloop:
-    CMP RDX, R10
-    JE .loop
-    MOV R8, [RDI + RDX * 8]
-    MOV R9, [RDI + RDX * 8 + 8]
-    CMP R8, R9
-    JL .skip
-    MOV [RDI + RDX * 8], R9
-    MOV [RDI + RDX * 8 + 8], R8
+    MOV RAX, [R15 + 8]
+    TEST RAX, RAX
+    JZ .loop
+    MOV RDI, [R15]
+    MOV RSI, [RAX]
+    CALL R13
+    TEST EAX, EAX
+    JLE .skip
+    MOV RAX, [R15 + 8]
+    MOV RCX, [R15]
+    MOV RDX, [RAX]
+    MOV [R15], RDX
+    MOV [RAX], RCX
 .skip:
-    ADD RDX, 1
+    MOV R15, [R15 + 8]
     JMP .subloop
 
 .end:
+    POP R15
+    POP R14
+    POP R13
+    POP R12
     POP RBX
     RET
