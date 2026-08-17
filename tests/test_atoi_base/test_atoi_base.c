@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   test_atoi_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trgascoi <trgascoi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: trgascoi <trgascoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 16:32:26 by trgascoi          #+#    #+#             */
-/*   Updated: 2026/08/13 16:35:31 by trgascoi         ###   ########.fr       */
+/*   Updated: 2026/08/17 03:01:32 by trgascoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "../tests.h"
 
 static void	check(const char *str, const char *base, int expected)
 {

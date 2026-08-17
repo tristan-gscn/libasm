@@ -17,13 +17,17 @@ BONUS_SRCS = $(wildcard srcs/*_bonus.s)
 OBJS       = $(SRCS:.s=.o)
 BONUS_OBJS = $(BONUS_SRCS:.s=.o)
 
-BONUS_ONLY_TESTS = tests/test_atoi_base.c tests/test_list_size.c \
-                    tests/test_list_push_front.c
-BONUS_FOLDER_SRCS = $(wildcard tests/test_list_sort/*.c) \
-                    $(wildcard tests/test_list_remove_if/*.c)
+COMMON_TEST_SRCS  = tests/main.c tests/tests.c
 
-TEST_SRCS        = $(filter-out $(BONUS_ONLY_TESTS),$(wildcard tests/*.c))
-BONUS_TEST_SRCS  = $(wildcard tests/*.c) $(BONUS_FOLDER_SRCS)
+MANDATORY_TEST_DIRS = test_strlen test_strcpy test_strcmp test_write \
+                    test_read test_strdup
+BONUS_TEST_DIRS   = test_atoi_base test_list_push_front test_list_size \
+                    test_list_sort test_list_remove_if
+
+TEST_SRCS        = $(COMMON_TEST_SRCS) \
+                    $(foreach d,$(MANDATORY_TEST_DIRS),$(wildcard tests/$(d)/*.c))
+BONUS_TEST_SRCS  = $(COMMON_TEST_SRCS) \
+                    $(foreach d,$(MANDATORY_TEST_DIRS) $(BONUS_TEST_DIRS),$(wildcard tests/$(d)/*.c))
 
 all: $(NAME)
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "../tests.h"
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>

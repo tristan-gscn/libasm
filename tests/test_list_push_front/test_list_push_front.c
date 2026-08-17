@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "../tests.h"
 #include <stdlib.h>
 
 static void	free_list(t_list *list)
